@@ -31,6 +31,8 @@ const SortableTable: React.FC<Props> = props => {
     const [sortedData, setSortedData] = useState<Planet[]>(data);
 
     useEffect(() => {
+        console.log(sortedData);
+
         //NOTE: sorting is inplace, so need to make new array
         const newSorted = [...sortedData];
         setSortedData(sortByKey(newSorted, sortMethod, ascending));
@@ -55,34 +57,38 @@ const SortableTable: React.FC<Props> = props => {
             <tr>
                 {
                     Object.keys(sortedData[0]).map((k) => {
-                        return (<th
-                            key={k}
-                            onClick={() => { setSortingMethodWithAscending(k) }}
-                        >
-                            <span className={`
+                        if (k !== '__typename')
+                            return (<th
+                                key={k}
+                                onClick={() => { setSortingMethodWithAscending(k) }}
+                            >
+                                <span className={`
                                 sortBy 
                                 ${k === sortMethod ? "actualMethod" : ""}
                                 ${(k === sortMethod && ascending) ? "ascending" : ""}
                                 ${(k === sortMethod && !ascending) ? "descending" : ""}
                                 `}
 
-                            >
-                                {(planetLabels as any)[k]}
-                            </span>
-                        </th>)
+                                >
+                                    {(planetLabels as any)[k]}
+                                </span>
+                            </th>)
                     })
                 }
             </tr>
             {
                 sortedData.map(planet => {
+                    console.log(planet);
+
                     return (
                         <tr key={planet.name}>
-                            {Object.values(planet).map((v) => {
+                            {Object.entries(planet).map(([k, v], _) => {
                                 // NOTE: climate is array, but in mockup it is value
                                 if (Array.isArray(v)) {
                                     v = v[0];
                                 }
-                                return (<td key={v}>{v}</td>)
+                                if (k !== '__typename')
+                                    return (<td key={v}>{v}</td>)
                             })}
                         </tr>
                     );

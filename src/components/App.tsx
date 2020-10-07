@@ -16,56 +16,6 @@ const GET_ALL_FILMS = gql`
   }
 `;
 
-const data2: Film = {
-  "data": {
-    "film": {
-      "planetConnection": {
-        "planets": [
-          {
-            "name": "Tatooine",
-            "rotationPeriod": 23,
-            "orbitalPeriod": 304,
-            "diameter": 10465,
-            "climates": [
-              "arid"
-            ],
-            "surfaceWater": 1,
-            "population": 200000
-          },
-          {
-            "name": "Alderaan",
-            "rotationPeriod": 24,
-            "orbitalPeriod": 364,
-            "diameter": 12500,
-            "climates": [
-              "temperate",
-              "arid"
-            ],
-            "surfaceWater": 40,
-            "population": 2000000000
-          },
-          {
-            "name": "Yavin IV",
-            "rotationPeriod": 24,
-            "orbitalPeriod": 4818,
-            "diameter": 10200,
-            "climates": [
-              "temperate",
-              "tropical"
-            ],
-            "surfaceWater": 8,
-            "population": 1000
-          }
-        ]
-      }
-    }
-  }
-}
-
-
-
-
-
 
 const App: React.FC = () => {
 

@@ -1,12 +1,32 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
 import SortableTable from "./SortableTable";
+import { gql, useQuery } from "@apollo/client";
+import { Planet } from "../interfaces/Planet.interface";
 
 type Props = {
     title: string,
     id: string,
 };
+
+const GET_FILM = gql`
+  query GetFilm{
+    film(id: "ZmlsbXM6MQ==") {
+      planetConnection{
+        planets{
+          name,
+          rotationPeriod,
+          orbitalPeriod,
+          diameter,
+          climates,
+          surfaceWater,
+          population
+        }
+      }
+    }
+  }
+`;
 
 const Collapse: React.FC<Props> = props => {
 
@@ -16,6 +36,13 @@ const Collapse: React.FC<Props> = props => {
     } = props;
 
     const [show, setShow] = useState(false);
+    const [planets, setPlanets] = useState<Planet[]>([]);
+    const { loading, error, data } = useQuery(GET_FILM);
+
+    useEffect(() => {
+        console.log(loading, error, data);
+
+    }, [loading, error, data]);
 
     return (
         <section className="collapse">
@@ -28,8 +55,10 @@ const Collapse: React.FC<Props> = props => {
 
             </div>
             <div className={`collapse__content ${show && "collapse__content--show"}`}>
-                {/* <SortableTable data={data2.data.film.planetConnection.planets} /> */}
-                <span>test</span>
+                {loading ?
+                    <span>Loading</span> :
+                    <SortableTable data={data.film.planetConnection.planets} />
+                }
             </div>
         </section>
 
