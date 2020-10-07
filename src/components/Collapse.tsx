@@ -15,12 +15,10 @@ const Collapse: React.FC<Props> = props => {
 
     return (
         <section className="collapse">
-            <header>
-                <span className="collapse__title">
-                    {title}
-                </span>
-                <ArrowOpen />
+            <header className="collapse__title">
+                {title}
             </header>
+            <ArrowOpen />
         </section>
 
     );

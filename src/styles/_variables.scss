@@ -7,7 +7,6 @@ $buttonColor: #1BA1BE;
 // font colors
 $mainFontColor: #00687F;
 $secondFontColor: #555555;
-$selectedSecondFontColor: #00687F;
 $copyrightColor: #999999;
 
 // sizes
@@ -17,7 +16,9 @@ $radiusApp: 8px;
 
 $heightCardBar: 48px;
 $marginTopCardBar: 16px;
-$paddingCardBar: auto 15px;
+$paddingCardBar: 0 15px;
+$radiusCardBar: 4px;
+$shadowCardBar: 0px 2px 1px rgba(196, 196, 196, 0.2);
 
 // font sizes
 $cardFontSize: 16px;
