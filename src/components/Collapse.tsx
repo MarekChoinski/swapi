@@ -14,7 +14,7 @@ const Collapse: React.FC<Props> = props => {
         title
     } = props;
 
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     return (
         <section className="collapse">

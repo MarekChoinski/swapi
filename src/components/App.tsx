@@ -80,13 +80,20 @@ const App: React.FC = () => {
       <header className="logo" >
         <Logo />
       </header>
-      <Collapse title="Test something">
-        <SortableTable data={data2.data.film.planetConnection.planets} />
-      </Collapse>
-      <Collapse title="Test something">
-        <SortableTable data={data2.data.film.planetConnection.planets} />
-      </Collapse>
-    </main>
+
+      {loading ?
+        <span>Loading</span> :
+        data.allFilms.films.map((film: any) => {
+          return (
+            <Collapse title={film.title}>
+              <SortableTable data={data2.data.film.planetConnection.planets} />
+            </Collapse>
+          )
+        })
+
+      }
+
+    </main >
   );
 }
 
