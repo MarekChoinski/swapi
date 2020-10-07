@@ -1,0 +1,64 @@
+.sortableTable {
+    width: 100%;
+    font-size: $tableFontSize;
+    font-weight: normal;
+    color: $secondFontColor;
+    text-align: left;
+    border-collapse: collapse;
+    border: none;
+
+    td,
+    th {
+        height: 30px;
+    }
+
+    tr:nth-child(1) {
+        border-bottom: 1px solid gray;
+    }
+
+    th {
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    // only first column text is aligned to left
+    td+td,
+    th+th {
+        text-align: right
+    }
+
+    th span,
+    td span {
+        display: block;
+        width: 100%;
+    }
+
+    th span.sort-by {
+        padding-right: 18px;
+        position: relative;
+    }
+
+    span.sort-by:before,
+    span.sort-by:after {
+        border: 4px solid transparent;
+        content: "";
+        display: block;
+        height: 0;
+        right: 5px;
+        top: 50%;
+        position: absolute;
+        width: 0;
+    }
+
+    span.sort-by:before {
+        border-bottom-color: #666;
+        margin-top: -9px;
+    }
+
+    span.sort-by:after {
+        border-top-color: #666;
+        margin-top: 1px;
+    }
+
+
+}

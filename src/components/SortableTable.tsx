@@ -14,11 +14,15 @@ const SortableTable: React.FC<Props> = props => {
     } = props;
 
     const keys: React.ReactNode = Object.keys(data[0]).map((k) => {
-        return (<th key={k}>{(planetLabels as any)[k]}</th>)
+        return (<th key={k}>
+            <span className="sort-by">
+                {(planetLabels as any)[k]}
+            </span>
+        </th>)
     });
 
     return (
-        <table >
+        <table className="sortableTable">
             <tr>
                 {keys}
             </tr>
@@ -27,6 +31,10 @@ const SortableTable: React.FC<Props> = props => {
                     return (
                         <tr>
                             {Object.values(planet).map((v) => {
+                                // NOTE: climate is array, but in mockup it is value
+                                if (Array.isArray(v)) {
+                                    v = v[0];
+                                }
                                 return (<td key={v}>{v}</td>)
                             })}
                         </tr>
