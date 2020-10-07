@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Collapse from './Collapse';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import SortableTable from './SortableTable';
 import { Film } from '../interfaces/Film.interface';
+import { useQuery, gql } from '@apollo/client';
 
-const data: Film = {
+const GET_ALL_FILMS = gql`
+  query GetAllFilms{
+    allFilms {
+      films {
+        id,
+        title
+      }
+    }
+  }
+`;
+
+const data2: Film = {
   "data": {
     "film": {
       "planetConnection": {
@@ -56,16 +68,23 @@ const data: Film = {
 
 
 const App: React.FC = () => {
+
+  const { loading, error, data } = useQuery(GET_ALL_FILMS);
+  useEffect(() => {
+    console.log(loading, error, data);
+
+  }, [loading, error, data]);
+
   return (
     <main className="app">
       <header className="logo" >
         <Logo />
       </header>
       <Collapse title="Test something">
-        <SortableTable data={data.data.film.planetConnection.planets} />
+        <SortableTable data={data2.data.film.planetConnection.planets} />
       </Collapse>
       <Collapse title="Test something">
-        <SortableTable data={data.data.film.planetConnection.planets} />
+        <SortableTable data={data2.data.film.planetConnection.planets} />
       </Collapse>
     </main>
   );

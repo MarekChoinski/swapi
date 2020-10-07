@@ -4,10 +4,17 @@ import './styles/index.scss'
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
