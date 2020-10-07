@@ -1,7 +1,10 @@
 .app {
     font-family: sans-serif;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: red;
+    max-width: $maxWidthApp;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    background-color: $appColor;
+    border-radius: $radiusApp;
+    padding: $paddingApp;
 }
