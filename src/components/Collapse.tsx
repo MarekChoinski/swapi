@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react"
-import ArrowOpen from '../assets/arrowOpen.svg';
+import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 
 type Props = {
     children: React.ReactNode,
