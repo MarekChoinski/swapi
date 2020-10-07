@@ -33,13 +33,13 @@
         width: 100%;
     }
 
-    th span.sort-by {
+    th span.sortBy {
         padding-right: 18px;
         position: relative;
     }
 
-    span.sort-by:before,
-    span.sort-by:after {
+    span.sortBy:before,
+    span.sortBy:after {
         border: 4px solid transparent;
         content: "";
         display: block;
@@ -50,14 +50,27 @@
         width: 0;
     }
 
-    span.sort-by:before {
+    span.sortBy:before {
         border-bottom-color: #666;
         margin-top: -9px;
     }
 
-    span.sort-by:after {
+    span.sortBy:after {
         border-top-color: #666;
         margin-top: 1px;
+    }
+
+    .sortBy.actualMethod {
+        color: $mainFontColor;
+    }
+
+    span.sortBy.ascending:before {
+        border-bottom-color: $mainFontColor;
+    }
+
+
+    span.sortBy.descending:after {
+        border-top-color: $mainFontColor;
     }
 
 

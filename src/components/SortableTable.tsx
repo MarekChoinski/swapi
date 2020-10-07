@@ -59,7 +59,14 @@ const SortableTable: React.FC<Props> = props => {
                             key={k}
                             onClick={() => { setSortingMethodWithAscending(k) }}
                         >
-                            <span className="sort-by">
+                            <span className={`
+                                sortBy 
+                                ${k === sortMethod ? "actualMethod" : ""}
+                                ${(k === sortMethod && ascending) ? "ascending" : ""}
+                                ${(k === sortMethod && !ascending) ? "descending" : ""}
+                                `}
+
+                            >
                                 {(planetLabels as any)[k]}
                             </span>
                         </th>)
