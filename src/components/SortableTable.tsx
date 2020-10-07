@@ -78,8 +78,6 @@ const SortableTable: React.FC<Props> = props => {
             </tr>
             {
                 sortedData.map(planet => {
-                    console.log(planet);
-
                     return (
                         <tr key={planet.name}>
                             {Object.entries(planet).map(([k, v], _) => {

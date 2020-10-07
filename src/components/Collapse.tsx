@@ -36,13 +36,7 @@ const Collapse: React.FC<Props> = props => {
     } = props;
 
     const [show, setShow] = useState(false);
-    const [planets, setPlanets] = useState<Planet[]>([]);
     const { loading, error, data } = useQuery(GET_FILM);
-
-    useEffect(() => {
-        console.log(loading, error, data);
-
-    }, [loading, error, data]);
 
     return (
         <section className="collapse">
