@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
+import { Planet } from "../interfaces/Planet.interface";
 
 type Props = {
-    data: any[],
+    data: Planet[],
 };
 
 const SortableTable: React.FC<Props> = props => {
@@ -12,27 +13,28 @@ const SortableTable: React.FC<Props> = props => {
         data
     } = props;
 
+    const keys: React.ReactNode = Object.keys(data[0]).map((k) => {
+        return (<th key={k}>{k}</th>)
+    });
 
     return (
         <table >
-            {console.log(data)}
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
+                {keys}
             </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>94</td>
-            </tr>
+            {
+                data.map(planet => {
+                    return (
+                        <tr>
+                            {Object.values(planet).map((v) => {
+                                return (<td key={v}>{v}</td>)
+                            })}
+                        </tr>
+                    );
+                }
+                )
+            }
         </table>
-
     );
 }
 
