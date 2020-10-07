@@ -1,6 +1,5 @@
 .collapse {
     margin-top: $marginTopCollapseBar;
-    // box-shadow: $shadowCollapseBar;
     background-color: $collapseColor;
     border-radius: $radiusCollapseBar;
 
@@ -17,8 +16,6 @@
         z-index: 99;
     }
 
-
-
     &__title {
         display: block;
         margin-right: auto;
@@ -27,7 +24,6 @@
     &__content {
         display: none;
         padding: $collapsePadding;
-        // background-color: $collapseColor;
 
         &--show {
             display: block;
