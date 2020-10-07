@@ -1,7 +1,7 @@
 // colors
 $bgColor: #FFFFFF;
 $appColor: #E0E6EE;
-$cardColor: #FFFFFF;
+$collapseColor: #FFFFFF;
 $buttonColor: #1BA1BE;
 
 // font colors
@@ -14,13 +14,14 @@ $maxWidthApp: 790px;
 $paddingApp: 32px 30px;
 $radiusApp: 8px;
 
-$heightCardBar: 48px;
-$marginTopCardBar: 16px;
-$paddingCardBar: 0 15px;
-$radiusCardBar: 4px;
-$shadowCardBar: 0px 2px 1px rgba(196, 196, 196, 0.2);
+$heightCollapseBar: 48px;
+$marginTopCollapseBar: 16px;
+$paddingCollapseBar: 0 15px;
+$radiusCollapseBar: 4px;
+$shadowCollapseBar: 0px 2px 1px rgba(196, 196, 196, 0.2);
+$collapsePadding: 16px;
 
 // font sizes
-$cardFontSize: 16px;
+$collapseFontSize: 16px;
 $tableFontSize: 12px;
 $buttonFontSize: 12px;
