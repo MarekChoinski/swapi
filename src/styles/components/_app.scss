@@ -3,8 +3,12 @@
     box-sizing: border-box;
     max-width: $maxWidthApp;
     width: 100%;
-    margin: 0 auto 0 auto;
+    margin: 70px auto;
     background-color: $appColor;
     border-radius: $radiusApp;
     padding: $paddingApp;
+}
+
+.logo {
+    text-align: center;
 }

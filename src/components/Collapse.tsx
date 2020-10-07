@@ -1,5 +1,6 @@
-import React, { ReactElement, useState } from "react"
+import React, { useState } from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
+import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
 
 type Props = {
     children: React.ReactNode,
@@ -22,7 +23,8 @@ const Collapse: React.FC<Props> = props => {
                 <header className="collapse__title">
                     {title}
                 </header>
-                <ArrowOpen />
+                {show ? <ArrowClose /> : <ArrowOpen />}
+
             </div>
             <div className={`collapse__content ${show && "collapse__content--show"}`}>
                 {children}
