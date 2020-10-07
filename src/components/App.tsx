@@ -1,6 +1,7 @@
 import React from 'react';
 import Collapse from './Collapse';
 import { ReactComponent as Logo } from '../assets/logo.svg';
+import SortableTable from './SortableTable';
 
 const data = [
   {
@@ -51,10 +52,10 @@ const App: React.FC = () => {
         <Logo />
       </header>
       <Collapse title="Test something">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur fuga, facilis autem similique maiores quaerat nihil optio debitis nam at fugiat veniam aut quas sit molestias, facere officiis perspiciatis dolores?</p>
+        <SortableTable data={data} />
       </Collapse>
       <Collapse title="Test something">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur fuga, facilis autem similique maiores quaerat nihil optio debitis nam at fugiat veniam aut quas sit molestias, facere officiis perspiciatis dolores?</p>
+        <SortableTable data={data} />
       </Collapse>
     </main>
   );
