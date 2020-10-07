@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
-import { Planet } from "../interfaces/Planet.interface";
+import { Planet, planetLabels } from "../interfaces/Planet.interface";
 
 type Props = {
     data: Planet[],
@@ -14,7 +14,7 @@ const SortableTable: React.FC<Props> = props => {
     } = props;
 
     const keys: React.ReactNode = Object.keys(data[0]).map((k) => {
-        return (<th key={k}>{k}</th>)
+        return (<th key={k}>{(planetLabels as any)[k]}</th>)
     });
 
     return (

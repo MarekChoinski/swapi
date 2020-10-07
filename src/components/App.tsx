@@ -26,7 +26,8 @@ const data: Film = {
             "orbitalPeriod": 364,
             "diameter": 12500,
             "climates": [
-              "temperate"
+              "temperate",
+              "arid"
             ],
             "surfaceWater": 40,
             "population": 2000000000
