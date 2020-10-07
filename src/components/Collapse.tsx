@@ -1,17 +1,18 @@
 import React, { useState } from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
+import SortableTable from "./SortableTable";
 
 type Props = {
-    children: React.ReactNode,
     title: string,
+    id: string,
 };
 
 const Collapse: React.FC<Props> = props => {
 
     const {
-        children,
-        title
+        title,
+        id,
     } = props;
 
     const [show, setShow] = useState(false);
@@ -27,7 +28,8 @@ const Collapse: React.FC<Props> = props => {
 
             </div>
             <div className={`collapse__content ${show && "collapse__content--show"}`}>
-                {children}
+                {/* <SortableTable data={data2.data.film.planetConnection.planets} /> */}
+                <span>test</span>
             </div>
         </section>
 
