@@ -18,8 +18,17 @@ const MovieForm: React.FC = () => {
 
     }, [loading, error, data]);
 
-    const { handleSubmit, register, errors } = useForm();
-    const onSubmit = (values: any) => console.log(values);
+    const { handleSubmit, register, reset, errors } = useForm();
+    const onSubmit = (values: any) => {
+        const result = {
+            ...values,
+            planets: [...actualPlanets]
+        }
+        setActualPlanetSelect("");
+        setActualPlanets([]);
+        reset();
+        console.log(result)
+    };
 
     const addPlanet = (planetName: any) => {
         if (!actualPlanets.includes(planetName)) {
@@ -59,10 +68,10 @@ const MovieForm: React.FC = () => {
                                 value: 20,
                                 message: 'Title is too long'
                             },
-                            pattern: {
-                                value: /^[A-Z]*$/,
-                                message: 'Title must start with capital letter'
-                            }
+                            // pattern: {
+                            //     value: /^[A-Z]*$/,
+                            //     message: 'Title must start with capital letter'
+                            // }
                         }
                         )}
                     //Movie tittle name must start with a capital letter.
@@ -74,8 +83,6 @@ const MovieForm: React.FC = () => {
                     }
 
                     <div className="planetBox">
-
-
                         {actualPlanets.map((planet: any) => {
                             return <div
                                 key={planet}
@@ -90,6 +97,7 @@ const MovieForm: React.FC = () => {
                     <label className="movieForm__label">
                         Add Planet
                     </label>
+
                     <SelectSearch
                         options={
                             data.allPlanets.planets.map((planet: any) => ({
@@ -103,8 +111,6 @@ const MovieForm: React.FC = () => {
                         onChange={addPlanet}
                         value={actualPlanetSelect}
                     />
-
-                    {errors.username && errors.username.message}
 
                     <button
                         type="submit"
