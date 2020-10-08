@@ -98,7 +98,7 @@ const MovieForm: React.FC = () => {
                             }))
                         }
                         search
-                        placeholder="Select your country"
+                        placeholder="Search for the the planet in database"
                         className="select"
                         onChange={addPlanet}
                         value={actualPlanetSelect}
