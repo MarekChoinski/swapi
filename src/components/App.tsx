@@ -20,7 +20,10 @@ const GET_ALL_FILMS = gql`
 const App: React.FC = () => {
 
   const { loading, error, data } = useQuery(GET_ALL_FILMS);
+  useEffect(() => {
+    console.log(loading, error, data);
 
+  }, [loading, error, data]);
   return (
     <main className="app">
       <header className="logo" >
@@ -31,7 +34,7 @@ const App: React.FC = () => {
         <span>Loading</span> :
         data.allFilms.films.map((film: any) => {
           return (
-            <Collapse title={film.title} id={film.string} />
+            <Collapse title={film.title} id={film.id} />
           )
         })
 

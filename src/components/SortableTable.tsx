@@ -85,8 +85,14 @@ const SortableTable: React.FC<Props> = props => {
                                 if (Array.isArray(v)) {
                                     v = v[0];
                                 }
-                                if (k !== '__typename')
-                                    return (<td key={v}>{v}</td>)
+                                if (k !== '__typename') {
+                                    if (v === null) {
+                                        return (<td key={v}>unknown</td>);
+                                    }
+
+                                    return (<td key={v}>{v}</td>);
+                                }
+
                             })}
                         </tr>
                     );

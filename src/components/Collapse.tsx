@@ -11,8 +11,8 @@ type Props = {
 };
 
 const GET_FILM = gql`
-  query GetFilm{
-    film(id: "ZmlsbXM6MQ==") {
+  query GetFilm($id: ID!){
+    film(id: $id) {
       planetConnection{
         planets{
           name,
@@ -36,7 +36,15 @@ const Collapse: React.FC<Props> = props => {
     } = props;
 
     const [show, setShow] = useState(false);
-    const { loading, error, data } = useQuery(GET_FILM);
+    const { loading, error, data } = useQuery(GET_FILM, {
+        variables: { id },
+    });
+
+    useEffect(() => {
+        console.log(id);
+        console.log(loading, error, data);
+
+    }, [loading, error, data]);
 
     return (
         <section className="collapse">
