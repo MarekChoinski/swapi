@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import { Planet, planetLabels } from "../interfaces/Planet.interface";
 import Collapse from "./Collapse";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
+import { sortByKey } from "../utils";
 
 type Props = {
     cacheData?: Planet[],
@@ -27,19 +28,6 @@ const GET_FILM = gql`
   }
 `;
 
-const sortByKey = (array: any[], key: string, ascending: boolean) => {
-    return array.sort((a, b) => {
-        const x = a[key];
-        const y = b[key];
-        if (ascending) {
-            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-        }
-        else {
-            return ((x > y) ? -1 : ((x < y) ? 1 : 0));
-        }
-    });
-}
-
 const SortableTable: React.FC<Props> = props => {
 
     const {
@@ -56,7 +44,6 @@ const SortableTable: React.FC<Props> = props => {
     const [getFilm, { loading, data }] = useLazyQuery(GET_FILM);
 
     useEffect(() => {
-
         // when data fetched
         if (data) {
 
@@ -69,7 +56,6 @@ const SortableTable: React.FC<Props> = props => {
                 //NOTE: sorting is inplace, so need to make new array
                 newSorted = [...sortedData];
             }
-
             setSortedData(sortByKey(newSorted, sortMethod, ascending));
         }
 
