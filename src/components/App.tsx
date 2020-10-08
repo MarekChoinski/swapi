@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 import SortableTable from './SortableTable';
 import { Film } from '../interfaces/Film.interface';
 import { useQuery, gql } from '@apollo/client';
+import Footer from './Footer';
 
 const GET_ALL_FILMS = gql`
   query GetAllFilms{
@@ -37,8 +38,9 @@ const App: React.FC = () => {
             <Collapse title={film.title} id={film.id} />
           )
         })
-
       }
+
+      <Footer />
 
     </main >
   );
