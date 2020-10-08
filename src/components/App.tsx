@@ -35,10 +35,12 @@ const App: React.FC = () => {
         <span>Loading</span> :
         data.allFilms.films.map((film: any) => {
           return (
-            <Collapse title={film.title} id={film.id} />
+            <SortableTable key={film.id} title={film.title} id={film.id} />
           )
         })
       }
+
+      <hr className="divider" />
 
       <Footer />
 
