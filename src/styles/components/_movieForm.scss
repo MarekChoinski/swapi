@@ -1,6 +1,22 @@
 .movieForm {
+    display: flex;
+    flex-direction: column;
+
     &__label {
         font-size: $labelFormFontSize;
         color: $secondFontColor;
+        padding: 5px 0;
+    }
+
+    &__button {
+        width: auto;
+        margin-left: auto;
+        border: none;
+        background-color: $buttonColor;
+        color: white;
+        font-size: $smallFont;
+        border-radius: $smallRadius;
+        width: 160px;
+        height: 33px;
     }
 }

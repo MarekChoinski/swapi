@@ -40,11 +40,13 @@ const MovieForm: React.FC = () => {
             onClick={() => { setShow(!show) }}
         >
             {!loading ?
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <label>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="movieForm"
+                >
+                    <label className="movieForm__label">
                         Movie title
                     </label>
-                    Movie title
                     <input
                         name="title"
                         ref={register({
@@ -62,7 +64,7 @@ const MovieForm: React.FC = () => {
                         </div>
                     })}
 
-                    <label>
+                    <label className="movieForm__label">
                         Add Planet
                     </label>
                     <SelectSearch
@@ -81,7 +83,12 @@ const MovieForm: React.FC = () => {
 
                     {errors.username && errors.username.message}
 
-                    <button type="submit">Submit</button>
+                    <button
+                        type="submit"
+                        className="movieForm__button"
+                    >
+                        ADD MOVIE
+                    </button>
                 </form> :
                 (<span>Loading</span>)
             }
