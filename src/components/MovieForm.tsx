@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { GET_ALL_PLANETS } from '../queries/getAllPlanets';
 import Collapse from './Collapse';
-
+import { ReactComponent as Delete } from '../assets/delete.svg';
 import { useForm } from "react-hook-form";
 import SelectSearch from 'react-select-search';
 
@@ -50,19 +50,42 @@ const MovieForm: React.FC = () => {
                     <input
                         name="title"
                         ref={register({
-                            required: "Required",
-                        })}
+                            required: "You need to insert title",
+                            minLength: {
+                                value: 3,
+                                message: 'Title must contain at least 3 letters'
+                            },
+                            maxLength: {
+                                value: 20,
+                                message: 'Title is too long'
+                            },
+                            pattern: {
+                                value: /^[A-Z]*$/,
+                                message: 'Title must start with capital letter'
+                            }
+                        }
+                        )}
+                    //Movie tittle name must start with a capital letter.
                     />
-                    {errors.title && errors.title.message}
+                    {errors.title &&
+                        <label className="movieForm__error">
+                            {errors.title.message}
+                        </label>
+                    }
 
-                    {actualPlanets.map((planet: any) => {
-                        return <div
-                            key={planet}
-                            onClick={(() => removePlanet(planet))}
-                        >
-                            {planet}
-                        </div>
-                    })}
+                    <div className="planetBox">
+
+
+                        {actualPlanets.map((planet: any) => {
+                            return <div
+                                key={planet}
+                                onClick={(() => removePlanet(planet))}
+                                className="planetBox__planet"
+                            >
+                                {planet} <Delete />
+                            </div>
+                        })}
+                    </div>
 
                     <label className="movieForm__label">
                         Add Planet
