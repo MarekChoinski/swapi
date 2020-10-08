@@ -3,30 +3,13 @@ import { Planet, planetLabels } from "../interfaces/Planet.interface";
 import Collapse from "./Collapse";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { sortByKey } from "../utils";
+import { GET_FILM } from "../queries/getFilm";
 
 type Props = {
     cacheData?: Planet[],
     title: string,
     id: string,
 };
-
-const GET_FILM = gql`
-  query GetFilm($id: ID!){
-    film(id: $id) {
-      planetConnection{
-        planets{
-          name,
-          rotationPeriod,
-          orbitalPeriod,
-          diameter,
-          climates,
-          surfaceWater,
-          population
-        }
-      }
-    }
-  }
-`;
 
 const SortableTable: React.FC<Props> = props => {
 
@@ -132,7 +115,6 @@ const SortableTable: React.FC<Props> = props => {
                 </table> :
                 <div>LOADING</div>
             }
-
         </Collapse>
     );
 }
