@@ -255,6 +255,8 @@ export const countries = [
 const MovieForm: React.FC = () => {
 
     const [show, setShow] = useState(true);
+    const [actualPlanetSelect, setActualPlanetSelect] = useState("");
+    const [actualPlanets, setActualPlanets] = useState<string[]>([]);
 
     const { loading, error, data } = useQuery(GET_ALL_PLANETS);
     useEffect(() => {
@@ -264,6 +266,17 @@ const MovieForm: React.FC = () => {
 
     const { handleSubmit, register, errors } = useForm();
     const onSubmit = (values: any) => console.log(values);
+
+    const addPlanet = (planetName: any) => {
+
+        if (!actualPlanets.includes(planetName)) {
+            setActualPlanets([...actualPlanets, planetName]);
+        }
+        console.log([...actualPlanets, planetName]);
+        setActualPlanetSelect("");
+    };
+
+
 
     return (
         <Collapse
@@ -277,26 +290,26 @@ const MovieForm: React.FC = () => {
                         name="email"
                         ref={register({
                             required: "Required",
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "invalid email address"
-                            }
                         })}
                     />
                     {errors.email && errors.email.message}
 
-                    <input
-                        name="username"
-                        ref={register({
-                            validate: value => value !== "admin" || "Nice try!"
-                        })}
-                    />
+                    {actualPlanets.map((planet: any) => {
+                        return <div key={planet} onClick={}>{planet}</div>
+                    })}
 
                     <SelectSearch
-                        options={countries}
+                        options={
+                            data.allPlanets.planets.map((planet: any) => ({
+                                name: planet.name,
+                                value: planet.name,
+                            }))
+                        }
                         search
                         placeholder="Select your country"
                         className="select"
+                        onChange={addPlanet}
+                        value={actualPlanetSelect}
                     />
 
                     {errors.username && errors.username.message}
