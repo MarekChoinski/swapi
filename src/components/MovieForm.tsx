@@ -276,7 +276,13 @@ const MovieForm: React.FC = () => {
         setActualPlanetSelect("");
     };
 
+    const removePlanet = (planetName: any) => {
+        console.log("pl", planetName);
 
+        let newPlanets = [...actualPlanets].filter(p => p !== planetName);
+        setActualPlanets(newPlanets);
+        console.log(newPlanets);
+    };
 
     return (
         <Collapse
@@ -295,7 +301,12 @@ const MovieForm: React.FC = () => {
                     {errors.email && errors.email.message}
 
                     {actualPlanets.map((planet: any) => {
-                        return <div key={planet} onClick={}>{planet}</div>
+                        return <div
+                            key={planet}
+                            onClick={(() => removePlanet(planet))}
+                        >
+                            {planet}
+                        </div>
                     })}
 
                     <SelectSearch
