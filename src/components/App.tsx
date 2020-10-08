@@ -6,17 +6,7 @@ import { Film } from '../interfaces/Film.interface';
 import { useQuery, gql } from '@apollo/client';
 import Footer from './Footer';
 import MovieForm from './MovieForm';
-
-const GET_ALL_FILMS = gql`
-  query GetAllFilms{
-    allFilms {
-      films {
-        id,
-        title
-      }
-    }
-  }
-`;
+import { GET_ALL_FILMS } from '../queries/getAllFilms';
 
 const App: React.FC = () => {
 
