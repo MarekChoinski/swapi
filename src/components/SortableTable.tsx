@@ -40,7 +40,11 @@ const SortableTable: React.FC<Props> = props => {
 
     useEffect(() => {
         // when data fetched
-        if (data || !cacheData.length) {
+        if (data || cacheData.length) {
+
+            console.log("data", data);
+            console.log("sortedData", sortedData);
+
 
             let newSorted;
             // fresh fetch
@@ -123,10 +127,9 @@ const SortableTable: React.FC<Props> = props => {
                                             }
                                             if (k !== '__typename') {
                                                 if (v === null) {
-                                                    return (<td key={v}>unknown</td>);
+                                                    return (<td key={planet.name + k}>unknown</td>);
                                                 }
-
-                                                return (<td key={v}>{v}</td>);
+                                                return (<td key={planet.name + k}>{v}</td>);
                                             }
 
                                         })}
