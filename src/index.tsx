@@ -9,8 +9,39 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { createStore } from 'redux';
 import reducer from './redux/reducer';
 
-const store = createStore(reducer, (process.env.NODE_ENV !== "production") ?
+export const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
+
+const persistedState = loadState();
+
+
+const store = createStore(reducer, persistedState, (process.env.NODE_ENV !== "production") ?
   composeWithDevTools() : undefined);
+
+export const saveState = (state: any) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch {
+    // ignore write errors
+  }
+};
+
+store.subscribe(() => {
+  saveState({
+    ...store.getState()
+  });
+});
+
 
 const client = new ApolloClient({
   uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
