@@ -1,17 +1,23 @@
 import { Planet } from "../interfaces/Planet.interface";
 
-interface IAddMovie {
-    type: "ADD_PLANET";
+export interface IMovie {
+    title: string,
+    planets: Planet[]
+}
+
+export interface IAddMovie {
+    type: "ADD_MOVIE";
     payload: {
-        title: string,
-        planets: Planet[]
-    };
+        movie: IMovie
+    }
 }
 
 export const addMovie = (title: string, planets: Planet[]): IAddMovie => ({
-    type: "ADD_PLANET",
+    type: "ADD_MOVIE",
     payload: {
-        title,
-        planets
+        movie: {
+            title,
+            planets
+        }
     },
 });

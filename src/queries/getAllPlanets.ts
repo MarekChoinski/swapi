@@ -4,7 +4,7 @@ export const GET_ALL_PLANETS = gql`
   query GetAllFilms{
     allPlanets {
       planets{
-        name
+        name,
       }
     }
   }

@@ -5,8 +5,12 @@ import Collapse from './Collapse';
 import { ReactComponent as Delete } from '../assets/delete.svg';
 import { useForm } from "react-hook-form";
 import SelectSearch from 'react-select-search';
+import { useDispatch } from 'react-redux';
+import { addMovie } from '../redux/actions';
 
 const MovieForm: React.FC = () => {
+
+    const dispatch = useDispatch();
 
     const [show, setShow] = useState(true);
     const [actualPlanetSelect, setActualPlanetSelect] = useState("");
@@ -27,7 +31,8 @@ const MovieForm: React.FC = () => {
         setActualPlanetSelect("");
         setActualPlanets([]);
         reset();
-        console.log(result)
+        console.log(result);
+        dispatch(addMovie(result.title, result.planets));
     };
 
     const addPlanet = (planetName: any) => {
@@ -102,7 +107,7 @@ const MovieForm: React.FC = () => {
                         options={
                             data.allPlanets.planets.map((planet: any) => ({
                                 name: planet.name,
-                                value: planet.name,
+                                value: planet,
                             }))
                         }
                         search
