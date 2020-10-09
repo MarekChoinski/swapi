@@ -1,5 +1,5 @@
 
-import { addMovie, IAddMovie, IMovie } from './actions';
+import { IAddMovie, IMovie } from './actions';
 
 export interface IMoviesState {
     readonly movies: IMovie[],

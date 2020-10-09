@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Collapse from './Collapse';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import SortableTable from './SortableTable';
-import { Film } from '../interfaces/Film.interface';
 import { useQuery, gql } from '@apollo/client';
 import Footer from './Footer';
 import MovieForm from './MovieForm';
@@ -16,11 +14,6 @@ const App: React.FC = () => {
   const cachedMovies = useSelector((state: IMoviesState) => state.movies)
   const { loading, error, data } = useQuery(GET_ALL_FILMS);
   const [movies, setMovies] = useState<IMovie[]>([]);
-
-  useEffect(() => {
-    console.log("app", loading, error, data);
-
-  }, [loading, error, data]);
 
   useEffect(() => {
     if (data) {

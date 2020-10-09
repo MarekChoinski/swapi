@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { Planet, planetLabels } from "../interfaces/Planet.interface";
 import Collapse from "./Collapse";
-import { gql, useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { sortByKey } from "../utils";
 import { GET_FILM } from "../queries/getFilm";
-import { GET_ALL_PLANETS } from "../queries/getAllPlanets";
 import { GET_ALL_PLANETS_DATA } from "../queries/getAllPlanetsData";
 import Loader from "./Loader";
 
@@ -42,14 +41,9 @@ const SortableTable: React.FC<Props> = props => {
     useEffect(() => {
         // when data fetched
         if (data || cacheData.length) {
-
-            console.log("data", data);
-            console.log("sortedData", sortedData);
-
-
             let newSorted;
-            // fresh fetch
 
+            // fresh fetch
             if (data && !sortedData.length) {
                 newSorted = [...data.film.planetConnection.planets];
             }

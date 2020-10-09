@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import React from "react"
 import { ReactComponent as ArrowOpen } from '../assets/arrowOpen.svg';
 import { ReactComponent as ArrowClose } from '../assets/arrowClose.svg';
 

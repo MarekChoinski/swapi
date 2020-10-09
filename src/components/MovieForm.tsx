@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GET_ALL_PLANETS } from '../queries/getAllPlanets';
 import Collapse from './Collapse';
 import { ReactComponent as Delete } from '../assets/delete.svg';
@@ -18,10 +18,6 @@ const MovieForm: React.FC = () => {
     const [actualPlanets, setActualPlanets] = useState<string[]>([]);
 
     const { loading, error, data } = useQuery(GET_ALL_PLANETS);
-    useEffect(() => {
-        console.log(loading, error, data);
-
-    }, [loading, error, data]);
 
     const { handleSubmit, register, reset, errors } = useForm();
     const onSubmit = (values: any) => {
