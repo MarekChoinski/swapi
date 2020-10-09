@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/swapi/static/css/main.82bd15af.chunk.css",
+    "main.js": "/swapi/static/js/main.992c2563.chunk.js",
+    "main.js.map": "/swapi/static/js/main.992c2563.chunk.js.map",
+    "runtime-main.js": "/swapi/static/js/runtime-main.aa1e55f8.js",
+    "runtime-main.js.map": "/swapi/static/js/runtime-main.aa1e55f8.js.map",
+    "static/js/2.22f9d995.chunk.js": "/swapi/static/js/2.22f9d995.chunk.js",
+    "static/js/2.22f9d995.chunk.js.map": "/swapi/static/js/2.22f9d995.chunk.js.map",
+    "index.html": "/swapi/index.html",
+    "precache-manifest.97e645a2154215eb14be86455cf9fc70.js": "/swapi/precache-manifest.97e645a2154215eb14be86455cf9fc70.js",
+    "service-worker.js": "/swapi/service-worker.js",
+    "static/css/main.82bd15af.chunk.css.map": "/swapi/static/css/main.82bd15af.chunk.css.map",
+    "static/js/2.22f9d995.chunk.js.LICENSE.txt": "/swapi/static/js/2.22f9d995.chunk.js.LICENSE.txt",
+    "static/media/arrowClose.81e948ad.svg": "/swapi/static/media/arrowClose.81e948ad.svg",
+    "static/media/arrowOpen.da45c4c0.svg": "/swapi/static/media/arrowOpen.da45c4c0.svg",
+    "static/media/delete.4fdbb74f.svg": "/swapi/static/media/delete.4fdbb74f.svg",
+    "static/media/loader.5495be49.svg": "/swapi/static/media/loader.5495be49.svg",
+    "static/media/logo.79977f05.svg": "/swapi/static/media/logo.79977f05.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa1e55f8.js",
+    "static/js/2.22f9d995.chunk.js",
+    "static/css/main.82bd15af.chunk.css",
+    "static/js/main.992c2563.chunk.js"
+  ]
+}
