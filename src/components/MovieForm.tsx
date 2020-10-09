@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { GET_ALL_PLANETS } from '../queries/getAllPlanets';
 import Collapse from './Collapse';
 import { ReactComponent as Delete } from '../assets/delete.svg';
@@ -107,7 +107,7 @@ const MovieForm: React.FC = () => {
                         options={
                             data.allPlanets.planets.map((planet: any) => ({
                                 name: planet.name,
-                                value: planet,
+                                value: planet.name,
                             }))
                         }
                         search
