@@ -10,6 +10,7 @@ import { GET_ALL_FILMS } from '../queries/getAllFilms';
 import { useSelector } from 'react-redux';
 import { IMoviesState } from '../redux/reducer';
 import { IMovie } from '../redux/actions';
+import Loader from './Loader';
 
 const App: React.FC = () => {
   const cachedMovies = useSelector((state: IMoviesState) => state.movies)
@@ -42,7 +43,7 @@ const App: React.FC = () => {
       </header>
 
       {loading ?
-        <span>Loading</span> :
+        <Loader /> :
         movies.map((film: any) => {
           return (
             <SortableTable key={film.id} title={film.title} id={film.id} cacheData={film.planets} />

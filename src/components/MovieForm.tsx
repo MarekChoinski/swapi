@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import SelectSearch from 'react-select-search';
 import { useDispatch } from 'react-redux';
 import { addMovie } from '../redux/actions';
+import Loader from './Loader';
 
 const MovieForm: React.FC = () => {
 
@@ -24,14 +25,16 @@ const MovieForm: React.FC = () => {
 
     const { handleSubmit, register, reset, errors } = useForm();
     const onSubmit = (values: any) => {
-        const result = {
-            ...values,
-            planets: [...actualPlanets]
+        if (actualPlanets.length) {
+            const result = {
+                ...values,
+                planets: [...actualPlanets]
+            }
+            dispatch(addMovie(result.title, result.planets));
+            reset();
+            setActualPlanetSelect("");
+            setActualPlanets([]);
         }
-        setActualPlanetSelect("");
-        setActualPlanets([]);
-        reset();
-        dispatch(addMovie(result.title, result.planets));
     };
 
     const addPlanet = (planetName: any) => {
@@ -72,10 +75,10 @@ const MovieForm: React.FC = () => {
                                 value: 20,
                                 message: 'Title is too long'
                             },
-                            // pattern: {
-                            //     value: /^[A-Z]*$/,
-                            //     message: 'Title must start with capital letter'
-                            // }
+                            pattern: {
+                                value: /^[A-Z][a-z0-9_-]*$/,
+                                message: 'Title must start with capital letter'
+                            }
                         }
                         )}
                     //Movie tittle name must start with a capital letter.
@@ -123,7 +126,7 @@ const MovieForm: React.FC = () => {
                         ADD MOVIE
                     </button>
                 </form> :
-                (<span>Loading</span>)
+                <Loader />
             }
         </Collapse>
     );

@@ -6,6 +6,7 @@ import { sortByKey } from "../utils";
 import { GET_FILM } from "../queries/getFilm";
 import { GET_ALL_PLANETS } from "../queries/getAllPlanets";
 import { GET_ALL_PLANETS_DATA } from "../queries/getAllPlanetsData";
+import Loader from "./Loader";
 
 type Props = {
     cacheData?: Planet[],
@@ -139,7 +140,7 @@ const SortableTable: React.FC<Props> = props => {
                         }
                     </tbody>
                 </table> :
-                <div>LOADING</div>
+                <Loader />
             }
         </Collapse>
     );
