@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Collapse from './Collapse';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import SortableTable from './SortableTable';
@@ -9,21 +9,31 @@ import MovieForm from './MovieForm';
 import { GET_ALL_FILMS } from '../queries/getAllFilms';
 import { useSelector } from 'react-redux';
 import { IMoviesState } from '../redux/reducer';
+import { IMovie } from '../redux/actions';
 
 const App: React.FC = () => {
-
   const cachedMovies = useSelector((state: IMoviesState) => state.movies)
-
   const { loading, error, data } = useQuery(GET_ALL_FILMS);
+  const [movies, setMovies] = useState<IMovie[]>([]);
+
   useEffect(() => {
-    console.log(loading, error, data);
+    console.log("app", loading, error, data);
 
   }, [loading, error, data]);
 
   useEffect(() => {
-    console.log("app", cachedMovies);
+    if (data) {
 
-  }, [cachedMovies]);
+      const parsedData = data.allFilms.films.map((movie: any) => ({
+        id: movie.id,
+        title: movie.title,
+        planets: [],
+      }))
+
+      setMovies([...parsedData, ...cachedMovies])
+    }
+
+  }, [cachedMovies, data]);
 
   return (
     <main className="app">
@@ -33,7 +43,7 @@ const App: React.FC = () => {
 
       {loading ?
         <span>Loading</span> :
-        data.allFilms.films.map((film: any) => {
+        movies.map((film: any) => {
           return (
             <SortableTable key={film.id} title={film.title} id={film.id} />
           )
@@ -41,11 +51,8 @@ const App: React.FC = () => {
       }
 
       <hr className="divider" />
-
       <MovieForm />
-
       <Footer />
-
     </main >
   );
 }

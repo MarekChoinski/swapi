@@ -59,7 +59,14 @@ const SortableTable: React.FC<Props> = props => {
 
     const setShowFetchData = () => {
         if (!sortedData.length && !show) {
-            getFilm({ variables: { id } })
+            if (!cacheData.length) {
+                getFilm({ variables: { id } })
+            }
+            //data is cached
+            else {
+                console.log("data is cached", cacheData);
+
+            }
         }
         setShow(!show);
     };
