@@ -31,7 +31,6 @@ const MovieForm: React.FC = () => {
         setActualPlanetSelect("");
         setActualPlanets([]);
         reset();
-        console.log(result);
         dispatch(addMovie(result.title, result.planets));
     };
 

@@ -4,6 +4,8 @@ import Collapse from "./Collapse";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { sortByKey } from "../utils";
 import { GET_FILM } from "../queries/getFilm";
+import { GET_ALL_PLANETS } from "../queries/getAllPlanets";
+import { GET_ALL_PLANETS_DATA } from "../queries/getAllPlanetsData";
 
 type Props = {
     cacheData?: Planet[],
@@ -21,18 +23,29 @@ const SortableTable: React.FC<Props> = props => {
 
     const [ascending, setAscending] = useState(false);
     const [sortMethod, setSortMethod] = useState("name");
-    const [sortedData, setSortedData] = useState<Planet[]>(cacheData);
+    const [sortedData, setSortedData] = useState<Planet[]>([]);
+    // const [parsedCachedData, setParsedCachedData] = useState<Planet[]>([]);
     const [show, setShow] = useState(false);
 
     const [getFilm, { loading, data }] = useLazyQuery(GET_FILM);
 
+    const [getAllPlanetsData] = useLazyQuery(GET_ALL_PLANETS_DATA, {
+        onCompleted: (data2: any) => {
+            if (data2) {
+                let newSorted = [...data2.allPlanets.planets.filter((p: any) => cacheData.includes(p.name))]
+                setSortedData(sortByKey(newSorted, sortMethod, ascending));
+            }
+        }
+    });
+
     useEffect(() => {
         // when data fetched
-        if (data) {
+        if (data || !cacheData.length) {
 
             let newSorted;
             // fresh fetch
-            if (!sortedData.length) {
+
+            if (data && !sortedData.length) {
                 newSorted = [...data.film.planetConnection.planets];
             }
             else {
@@ -64,8 +77,7 @@ const SortableTable: React.FC<Props> = props => {
             }
             //data is cached
             else {
-                console.log("data is cached", cacheData);
-
+                getAllPlanetsData();
             }
         }
         setShow(!show);

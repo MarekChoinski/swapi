@@ -45,7 +45,7 @@ const App: React.FC = () => {
         <span>Loading</span> :
         movies.map((film: any) => {
           return (
-            <SortableTable key={film.id} title={film.title} id={film.id} />
+            <SortableTable key={film.id} title={film.title} id={film.id} cacheData={film.planets} />
           )
         })
       }
