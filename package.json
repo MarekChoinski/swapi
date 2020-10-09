@@ -16,8 +16,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.2",
+    "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
     "react-select-search": "^2.1.1",
+    "redux": "^4.0.5",
     "typescript": "^3.7.5"
   },
   "scripts": {
