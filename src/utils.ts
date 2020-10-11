@@ -1,3 +1,5 @@
+// NOTE: this is not pure function due to time limit of developing app
+
 export const sortByKey = (array: any[], key: string, ascending: boolean) => {
     return array.sort((a, b) => {
         const x = a[key];
