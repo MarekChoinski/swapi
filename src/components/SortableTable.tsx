@@ -30,9 +30,10 @@ const SortableTable: React.FC<Props> = props => {
     const [getFilm, { loading, data }] = useLazyQuery(GET_FILM);
 
     const [getAllPlanetsData] = useLazyQuery(GET_ALL_PLANETS_DATA, {
+        fetchPolicy: 'no-cache',
         onCompleted: (data2: any) => {
             if (data2) {
-                let newSorted = [...data2.allPlanets.planets.filter((p: any) => cacheData.includes(p.name))]
+                let newSorted = [...data2.allPlanets.planets.filter((p: any) => cacheData.includes(p.name))];
                 setSortedData(sortByKey(newSorted, sortMethod, ascending));
             }
         }
@@ -74,7 +75,7 @@ const SortableTable: React.FC<Props> = props => {
             if (!cacheData.length) {
                 getFilm({ variables: { id } })
             }
-            //data is cached
+            //data is cached from localstorage
             else {
                 getAllPlanetsData();
             }
@@ -109,7 +110,9 @@ const SortableTable: React.FC<Props> = props => {
                                     })
                                 }
                             </tr>
+
                             {
+
                                 sortedData.map(planet => {
                                     return (
                                         <tr key={planet.name}>
@@ -145,16 +148,16 @@ const SortableTable: React.FC<Props> = props => {
 
                                             if (v === null) {
                                                 return (
-                                                    <div className="mobileSortableTable__row">
+                                                    <div key={planet.name + k} className="mobileSortableTable__row">
                                                         <div>{(planetLabels as any)[k]}</div>
-                                                        <div key={planet.name + k}>unknown</div>
+                                                        <div>unknown</div>
                                                     </div>
                                                 );
                                             }
                                             return (
-                                                <div className="mobileSortableTable__row">
+                                                <div key={planet.name + k} className="mobileSortableTable__row">
                                                     <div>{(planetLabels as any)[k]}</div>
-                                                    <div key={planet.name + k}>{v}</div>
+                                                    <div>{v}</div>
                                                 </div >
                                             );
                                         }
