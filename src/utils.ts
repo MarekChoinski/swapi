@@ -1,4 +1,4 @@
-// NOTE: this is not pure function due to time limit of developing app
+// NOTE: this is not pure function due to time limit of developing time
 
 export const sortByKey = (array: any[], key: string, ascending: boolean) => {
     return array.sort((a, b) => {
